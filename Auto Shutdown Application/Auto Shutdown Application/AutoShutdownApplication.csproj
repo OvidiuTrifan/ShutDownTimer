@@ -49,7 +49,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="AutoShutdownApp.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
@@ -57,16 +57,16 @@
     <Compile Include="ViewControllers\ShutDownViewController.cs" />
     <Compile Include="ViewModels\ShutDownViewModel.cs" />
     <Compile Include="Properties\UIResources.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="ShutDownTimerMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
+    <Compile Include="AutoShutdownApp.xaml.cs">
+      <DependentUpon>AutoShutdownApp.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="ShutDownTimerMainWindow.xaml.cs">
+      <DependentUpon>ShutDownTimerMainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

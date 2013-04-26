@@ -1,7 +1,7 @@
-﻿<Application x:Class="AutoShutdownApplication.App"
+﻿<Application x:Class="AutoShutdownApplication.AutoShutdownApp"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml">
+             StartupUri="ShutDownTimerMainWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>

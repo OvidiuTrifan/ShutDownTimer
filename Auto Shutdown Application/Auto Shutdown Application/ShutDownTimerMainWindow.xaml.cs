@@ -20,7 +20,7 @@ namespace AutoShutdownApplication
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ShutDownTimerMainWindow : Window
     {
 
         public ShutDownViewModel Model
@@ -39,11 +39,11 @@ namespace AutoShutdownApplication
 
         // Using a DependencyProperty as the backing store for IsActive.  This enables animation, styling, binding, etc...
         public new static readonly DependencyProperty IsActiveProperty =
-            DependencyProperty.Register("IsActive", typeof(bool), typeof(MainWindow));
+            DependencyProperty.Register("IsActive", typeof(bool), typeof(ShutDownTimerMainWindow));
 
 
 
-        public MainWindow()
+        public ShutDownTimerMainWindow()
         {
             InitializeComponent();
             DataContext = new ShutDownViewModel();
