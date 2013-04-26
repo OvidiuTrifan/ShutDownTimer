@@ -47,10 +47,6 @@ namespace AutoShutdownApplication
         {
             InitializeComponent();
             DataContext = new ShutDownViewModel();
-            Model.Hours = 0;
-            Model.Minutes = 0;
-            Model.Seconds = 20;
-            Model.Action = ShutDownViewModel.ActionType.Shutdown;
         }
 
         protected override void OnClosed(EventArgs e)
@@ -90,7 +86,7 @@ namespace AutoShutdownApplication
             bool loop = true;
             while (loop)
             {
-                Thread.Sleep(10);
+                Thread.Sleep(1000);
                 this.Dispatcher.Invoke((Action)(() =>
                     {
                         loop = CalculateTime();
@@ -146,6 +142,7 @@ namespace AutoShutdownApplication
                         ShutDownViewModel.ActionType.LogOff,
                     };
                 comboBox.ItemsSource = actionTypes;
+                comboBox.SelectedValue = ShutDownViewModel.ActionType.Shutdown;
             }
         }
 
