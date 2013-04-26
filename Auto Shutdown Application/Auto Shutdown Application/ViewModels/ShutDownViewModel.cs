@@ -9,12 +9,12 @@ namespace AutoShutdownApplication.ViewModels
 
         #region Propretis
 
-        private IShutDownViewController shutDownViewController;
+        private readonly IShutDownViewController _shutDownViewController;
 
 
         public ShutDownViewModel()
         {
-          shutDownViewController= new ShutDownViewController();
+          _shutDownViewController= new ShutDownViewController();
         }
 
         public int Hours
@@ -76,13 +76,13 @@ namespace AutoShutdownApplication.ViewModels
             switch (Action)
             {
                 case ActionType.Restart:
-                    shutDownViewController.Restart(this);
+                    _shutDownViewController.Restart(this);
                     break;
                 case ActionType.Shutdown:
-                    shutDownViewController.ShutDown(this);
+                    _shutDownViewController.ShutDown(this);
                     break;
                 case ActionType.LogOff:
-                    shutDownViewController.LogOff(this);
+                    _shutDownViewController.LogOff(this);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

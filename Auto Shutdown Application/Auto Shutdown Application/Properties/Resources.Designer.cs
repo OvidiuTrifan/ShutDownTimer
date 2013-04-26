@@ -61,7 +61,16 @@ namespace AutoShutdownApplication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2013©Trifan .
+        ///   Looks up a localized string similar to Commercial usage not allowed.
+        /// </summary>
+        internal static string ID_COMERCIAL_USE {
+            get {
+                return ResourceManager.GetString("ID_COMERCIAL_USE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copyright © 2013 .
         /// </summary>
         internal static string ID_COPYRIGHT {
             get {

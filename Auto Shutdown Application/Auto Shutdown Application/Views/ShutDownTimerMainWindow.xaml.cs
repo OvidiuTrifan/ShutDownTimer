@@ -1,54 +1,47 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using AutoShutdownApplication.ViewModels;
 
-namespace AutoShutdownApplication
+namespace AutoShutdownApplication.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class ShutDownTimerMainWindow : Window
+  /// </summary>
+    public partial class ShutDownTimerMainWindow
     {
 
+        #region Propreties
         public ShutDownViewModel Model
         {
             get { return DataContext as ShutDownViewModel; }
 
         }
 
-        private Thread _workerThread;
-
         public new bool IsActive
         {
             get { return (bool)GetValue(IsActiveProperty); }
             set { SetValue(IsActiveProperty, value); }
         }
-
         // Using a DependencyProperty as the backing store for IsActive.  This enables animation, styling, binding, etc...
         public new static readonly DependencyProperty IsActiveProperty =
             DependencyProperty.Register("IsActive", typeof(bool), typeof(ShutDownTimerMainWindow));
 
+        private Thread _workerThread;
 
+        #endregion
 
+        #region Ctor
         public ShutDownTimerMainWindow()
         {
             InitializeComponent();
             DataContext = new ShutDownViewModel();
         }
+        #endregion
 
+        #region Override
         protected override void OnClosed(EventArgs e)
         {
             if (_workerThread != null && _workerThread.IsAlive)
@@ -58,8 +51,25 @@ namespace AutoShutdownApplication
             base.OnClosed(e);
 
         }
+        #endregion
 
-        private void OnClickButton(object sender, RoutedEventArgs e)
+        #region Event Handlers
+
+        private void OnComboBoxLoaded(object sender, RoutedEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            if (comboBox == null) return;
+            var actionTypes = new List<ShutDownViewModel.ActionType>
+                {
+                    ShutDownViewModel.ActionType.Shutdown,
+                    ShutDownViewModel.ActionType.Restart,
+                    ShutDownViewModel.ActionType.LogOff,
+                };
+            comboBox.ItemsSource = actionTypes;
+            comboBox.SelectedValue = ShutDownViewModel.ActionType.Shutdown;
+        }
+
+        private void OnActionButtonClick(object sender, RoutedEventArgs e)
         {
 
             if (IsActive)
@@ -73,26 +83,27 @@ namespace AutoShutdownApplication
             else
             {
                 IsActive = true;
-                if (_workerThread == null)
-                {
-                    _workerThread = new Thread(ThreadAction);
-                }
+                _workerThread = new Thread(ThreadAction);
                 _workerThread.Start();
             }
         }
 
+        #endregion
+
+        #region Private Methods
+
         private void ThreadAction()
         {
-            bool loop = true;
+            var loop = true;
             while (loop)
             {
                 Thread.Sleep(1000);
-                this.Dispatcher.Invoke((Action)(() =>
+                Dispatcher.Invoke(() =>
                     {
                         loop = CalculateTime();
-                    }));
+                    });
             }
-            this.Dispatcher.Invoke((Action)(() => Model.ActionRequest()));
+            Dispatcher.Invoke(() => Model.ActionRequest());
         }
 
         private bool CalculateTime()
@@ -130,21 +141,7 @@ namespace AutoShutdownApplication
             return true;
         }
 
-        private void OnLoadedComboBox(object sender, RoutedEventArgs e)
-        {
-            ComboBox comboBox = sender as ComboBox;
-            if (comboBox != null)
-            {
-                List<ShutDownViewModel.ActionType> actionTypes = new List<ShutDownViewModel.ActionType>
-                    {
-                        ShutDownViewModel.ActionType.Shutdown,
-                        ShutDownViewModel.ActionType.Restart,
-                        ShutDownViewModel.ActionType.LogOff,
-                    };
-                comboBox.ItemsSource = actionTypes;
-                comboBox.SelectedValue = ShutDownViewModel.ActionType.Shutdown;
-            }
-        }
+        #endregion
 
     }
 }

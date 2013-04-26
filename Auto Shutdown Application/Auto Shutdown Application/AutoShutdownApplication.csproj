@@ -33,6 +33,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -57,18 +61,18 @@
     <Compile Include="ViewControllers\ShutDownViewController.cs" />
     <Compile Include="ViewModels\ShutDownViewModel.cs" />
     <Compile Include="Properties\UIResources.cs" />
-    <Page Include="ShutDownTimerMainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="Views\Converters\InvertValueConverter.cs" />
+    <Compile Include="Views\ShutDownTimerMainWindow.xaml.cs">
+      <DependentUpon>ShutDownTimerMainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AutoShutdownApp.xaml.cs">
       <DependentUpon>AutoShutdownApp.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ShutDownTimerMainWindow.xaml.cs">
-      <DependentUpon>ShutDownTimerMainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="Views\ShutDownTimerMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -87,6 +91,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -97,7 +102,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Images\shutdown.png" />
   </ItemGroup>

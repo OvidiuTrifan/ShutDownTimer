@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoShutdownApplication.Properties
 {
@@ -37,6 +33,11 @@ namespace AutoShutdownApplication.Properties
         public static String ID_INFO
         {
             get { return Resources.ID_INFO; }
+        }
+
+        public static String ID_COMERCIAL_USE
+        {
+            get { return Resources.ID_COMERCIAL_USE; }
         }
         
     }
