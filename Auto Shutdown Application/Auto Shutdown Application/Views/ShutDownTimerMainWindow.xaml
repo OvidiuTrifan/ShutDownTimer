@@ -5,49 +5,51 @@
         xmlns:cnv="clr-namespace:AutoShutdownApplication.Views.Converters"
         Title="{x:Static resx:UIResources.ID_TITLE}"
         Icon="../Resources/Images/shutdown.png"
-        Height="150" 
-        Width="320"
+        Height="90" 
+        Width="363"
         ResizeMode="NoResize"
-        Background="AliceBlue"
-        x:Name="MainWindowPanel">
-
+        Background="CadetBlue"
+        x:Name="MainWindowPanel"
+       >
     <Window.Resources>
-        <Style x:Key="LabelStyle" TargetType="Label">
-            <Setter Property="Label.FontSize" Value="20" />
-            <Setter Property="Label.FontWeight" Value="Bold" />
-            <Setter Property="Label.VerticalAlignment" Value="Top" />
-            <Setter Property="Label.Content" Value="{x:Static resx:UIResources.ID_TIME_SEPARATOR}" />
+        <Style x:Key="ReadOnlyTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Width" Value="10" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Text" Value="{x:Static resx:UIResources.ID_TIME_SEPARATOR}" />
             <Style.Triggers>
                 <DataTrigger Binding ="{Binding ElementName=MainWindowPanel, Path=IsActive}"  Value="True">
-                    <Setter Property="Label.Foreground" Value="Red" />
+                    <Setter Property="Foreground" Value="Red" />
                 </DataTrigger>
                 <DataTrigger   Binding ="{Binding ElementName=MainWindowPanel, Path=IsActive}"  Value="False">
-                    <Setter Property="Label.Foreground" Value="Green" />
+                    <Setter Property="Foreground" Value="Green" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
 
         <Style x:Key="TextBoxStyle" TargetType="TextBox">
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="15" />
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="MaxLength" Value="2"/>
-            <Setter Property="Width" Value="30" />
-            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="25" />
+            <Setter Property="Height" Value="20" />
             <Style.Triggers>
                 <DataTrigger  Binding ="{Binding ElementName=MainWindowPanel, Path=IsActive}"  Value="True">
                     <Setter Property="Foreground" Value="Red" />
                     <Setter Property="IsReadOnly" Value="True" />
-                    <Setter Property="BorderBrush" Value="AliceBlue" />
-                    <Setter Property="Background" Value="AliceBlue" />
-
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Setter Property="Background" Value="Transparent" />
                 </DataTrigger>
                 <DataTrigger   Binding ="{Binding ElementName=MainWindowPanel, Path=IsActive}"  Value="False">
                     <Setter Property="Foreground" Value="Green" />
-                    <Setter Property="IsReadOnly" Value="False" />
-                    <Setter Property="Background" Value="White" />
-                    <Setter Property="BorderBrush" Value="Black" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -56,7 +58,7 @@
             <Setter Property="FontSize" Value="10" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="25" />
+            <Setter Property="Height" Value="20" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Content" Value="{x:Static resx:UIResources.ID_START}" />
             <Style.Triggers>
@@ -74,10 +76,9 @@
 
     </Window.Resources>
 
-    <Grid Margin="5">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="5"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="5"/>
             <RowDefinition Height="Auto"/>
@@ -86,14 +87,16 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0"
+        <Grid Grid.Row="1"
               Grid.Column="0"
               ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="35"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -102,34 +105,11 @@
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox  Grid.Row="0"
-                 Grid.Column="1"
-                 Text="{Binding Hours,Mode=TwoWay }"
-                 Style="{StaticResource TextBoxStyle}"
-                />
-            <Label Grid.Row="0"
-               Grid.Column="2"
-               Style="{StaticResource LabelStyle}"
-               
-               />
-            <TextBox  Grid.Row="0"
-                 Grid.Column="3"
-                 Text="{Binding Minutes,Mode=TwoWay }"
-                 Style="{StaticResource TextBoxStyle}"
-                 />
-            <Label Grid.Row="0"
-               Grid.Column="4"
-               Style="{StaticResource LabelStyle}"
-               />
-            <TextBox  Grid.Row="0"
-                 Grid.Column="5"
-                 Text="{Binding Seconds,Mode=TwoWay }"
-                 Style="{StaticResource TextBoxStyle}"
-                 />
+
             <ComboBox Grid.Row="0"
-                      Grid.Column="7"
-                      Height="30"
-                      Width="100"
+                      Grid.Column="1"
+                      Height="20"
+                      Width="120"
                       SelectedValue="{Binding Action, Mode=TwoWay}"
                       Loaded="OnComboBoxLoaded"
                       VerticalAlignment="Bottom"
@@ -139,24 +119,48 @@
                       FontWeight="Bold"
                       IsEnabled="{Binding ElementName=MainWindowPanel, Path=IsActive,Converter={StaticResource InvertValueConverter}}"
                       />
-        </Grid>
-        <Button Grid.Row="2"
-                    Grid.Column="0"
+
+            <TextBox  Grid.Row="0"
+                 Grid.Column="3"
+                 Text="{Binding Hours,Mode=TwoWay }"
+                 Style="{StaticResource TextBoxStyle}"
+                />
+            <TextBox Grid.Row="0"
+               Grid.Column="4"
+               Style="{StaticResource ReadOnlyTextBoxStyle}"
+               
+               />
+            <TextBox  Grid.Row="0"
+                 Grid.Column="5"
+                   Text="{Binding Minutes,Mode=TwoWay }"
+                 Style="{StaticResource TextBoxStyle}"
+                 />
+            <TextBox Grid.Row="0"
+                     Grid.Column="6"
+                     Style="{StaticResource ReadOnlyTextBoxStyle}"
+               />
+            <TextBox  Grid.Row="0"
+                 Grid.Column="7"
+                 Text="{Binding Seconds,Mode=TwoWay }"
+                 Style="{StaticResource TextBoxStyle}"
+                 />
+            <Button Grid.Row="1"
+                    Grid.Column="9"
                     Grid.ColumnSpan="2"    
                     Click="OnActionButtonClick"
                     Style="{StaticResource ButtonStyle}"
                />
+        </Grid>
+
         <StackPanel Grid.Column="0"
                     Grid.ColumnSpan="2"
                     Grid.Row="4" 
                     Background="WhiteSmoke"
-                    Height="30"
-                    Width="{Binding ElementName=MainWindowPanel,Path=Width}"
-                    ToolTip="{x:Static resx:UIResources.ID_INFO}"
+                    ToolTip="{x:Static resx:UIResources.ID_INFO}" Margin="0,0,0,-1"
                     >
             <Label
                 Grid.Row="0"
-                Margin="0,5,23,0"
+                Margin="0,0,23,0"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 FontWeight="Bold"
