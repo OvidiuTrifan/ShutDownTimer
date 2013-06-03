@@ -1,0 +1,14 @@
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\bin\Debug\Auto Shutdown Application.exe.config
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\bin\Debug\Auto Shutdown Application.exe
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\bin\Debug\Auto Shutdown Application.pdb
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\Views\ShutDownTimerMainWindow.g.cs
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\AutoShutdownApp.g.cs
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\Auto Shutdown Application_MarkupCompile.cache
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\Auto Shutdown Application_MarkupCompile.lref
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\Views\ShutDownTimerMainWindow.baml
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\Auto Shutdown Application.g.resources
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\AutoShutdownApplication.Properties.Resources.resources
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\AutoShutdownApplication.csproj.GenerateResource.Cache
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\Auto Shutdown Application.exe
+E:\Projects\AutoShutdownApplication\Auto Shutdown Application\obj\Debug\Auto Shutdown Application.pdb
